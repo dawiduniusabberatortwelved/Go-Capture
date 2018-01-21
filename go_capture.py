@@ -138,7 +138,7 @@ if __name__ == '__main__':
 	parser.add_argument("-s", "--seconds", type=float, default=1, help="Number of seconds to wait before pressing END (default 1 second)")
 	args = parser.parse_args()
 	
-	if not os.path.exists(os.path.dirname(args.output)):
+	if not os.path.exists(os.path.dirname(args.output)) and os.path.dirname(args.output) != "":
 		os.makedirs(os.path.dirname(args.output))
 	
 	if not args.username.endswith("@gmail.com"):
