@@ -107,6 +107,13 @@ def parse_data(html_soup, output):
 				tmp_dict["Card Subtitle"] = sub_title
 			if dt_time.strip() != "":
 				tmp_dict["Time"] = dt_time
+				
+			if action.lower().startswith("said"):
+				try:
+					audio_url = card.find("audio-player").attrs["audio-url"]
+					tmp_dict["Audio URL"] = audio_url
+				except KeyError:
+					pass
 			
 			parsed_data[date].append(tmp_dict)
 			
